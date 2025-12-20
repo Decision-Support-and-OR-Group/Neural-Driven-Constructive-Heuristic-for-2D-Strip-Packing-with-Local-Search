@@ -70,7 +70,7 @@ private:
 
 
 
-std::string cmd1 = "nd-ch-sp --generate_logistic --output_file=test/gen_file.txt --strip_width=1200 --T=10 --dt_min=1 --dt_max=10 --dim=small --set_size=50000 --seed=1";
+std::string cmd1 = "nd-ch-sp --generate_logistic --output_file=test_dir/training_instances.txt --strip_width=1200 --T=10 --dt_min=1 --dt_max=10 --dim=small --set_size=500000 --seed=1";
 std::string cmd2 = "nd-ch-sp --generate_logistic --output_file=test/test_file_10.txt --strip_width=1200 --T=10 --dt_min=1 --dt_max=10 --dim=small --set_size=10 --seed=1";
 std::string cmd3 = "nd-ch-sp --train --output_dir=train_out_dir --input_file=test/gen_file.txt --val_set_size=10000 --layer1=32 --layer2=16 --batch_size=100 --population=192 --max_evals=500000 --sigma=0.4 --seed=1";
 std::string cmd4 = "nd-ch-sp --test --output_dir=test_out_dir --input_file=test/test_file_10.txt --training_output_dir=train_out_dir --time_limit=60 --population=192 --max_evals=50000000 --sigma=0.4 --seed=1 --solution --graphics";
@@ -80,16 +80,16 @@ std::string cmd4 = "nd-ch-sp --test --output_dir=test_out_dir --input_file=test/
 int main(int argc, char** argv) {
 
 
-    // CmdLineArgs parser(cmd4);
-    // AppConfig Cfg;
-    //
-    // if (!parse_command_line(parser.argc(), parser.argv(), Cfg)) return 1;
+    CmdLineArgs parser(cmd1);
+    AppConfig Cfg;
+
+    if (!parse_command_line(parser.argc(), parser.argv(), Cfg)) return 1;
 
     // return 0;
-    AppConfig Cfg;
-    if (!parse_command_line(argc, argv, Cfg)) {
-        return 1;
-    }
+    // AppConfig Cfg;
+    // if (!parse_command_line(argc, argv, Cfg)) {
+    //     return 1;
+    // }
 
 
 

@@ -33,7 +33,8 @@ namespace binpack {
     namespace fs = std::filesystem;
 
     void saveAsODPS( vector<binpack::BinpackData>& Data, string filename ) {
-        ofstream ofs(filename);
+        ofstream ofs;
+        ofs = nnutils::openFileWithDirs<ofstream>(filename);
         ofs << "***2D Rectangular Problem***" << endl << flush;
         ofs << "***Problem tests for the Open Dimension Problem (ODP/S)***" << endl << flush;
         ofs << "Input parameter file: " << endl << flush;
