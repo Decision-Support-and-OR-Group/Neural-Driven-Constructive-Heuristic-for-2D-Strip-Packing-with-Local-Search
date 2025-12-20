@@ -69,7 +69,7 @@ Executing:
 ```
 
 results in the following description of the basic program usage:
-
+```bash
 Usage: nd-ch-sp [mode] [options]
 
 Global Options:
@@ -117,5 +117,28 @@ Testing Options (--test):
                              output_dir
   --graphics                 If specified, the solution image will be generated
                              for each problem
+```
 
+### Examples
+Typical workflow with the program looks as follows:
+
+1. Generate random synthetic training problems of the real-life logistic type and save them into 'test_dir/gen_file.txt' file.
+```
+./nd-ch-sp --generate_logistic --output_file=test_dir/training_instances.txt --strip_width=1200 --T=10 --dt_min=1 --dt_max=10 --dim=small --set_size=500000 --seed=1
+```
+
+2. Train new network on generated problems. Save the network in the 'test_dir' directory.
+```
+./nd-ch-sp --train --output_dir=test_dir --input_file=test_dir/training_instances.txt --val_set_size=10000 --layer1=32 --layer2=16 --batch_size=100 --population=192 --max_evals=500000 --sigma=0.4 --seed=1
+```
+
+3. Generate smaller set of test problems and save them into 'test/test_instances.txt' file. Important is, that most options, with exception to 'seed' are the same as in the training set.
+```
+./nd-ch-sp --generate_logistic --output_file=test_dir/test_instances.txt --strip_width=1200 --T=10 --dt_min=1 --dt_max=10 --dim=small --set_size=10 --seed=10000
+```
+
+4. Test the constructive heuristic utilizing previously trained network in the 'test_dir' directory on a set of test problems in the 'test-problems' directory. Store results in the 'test-results' directory.
+```
+./nd-ch-sp --test --output_dir=test_dir --input_file=test_dir/test_instances.txt --training_output_dir=test_dir --time_limit=60 --population=192 --max_evals=50000000 --sigma=0.4 --seed=1 --solution --graphics
+```
 
