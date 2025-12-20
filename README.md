@@ -87,7 +87,7 @@ Generation Options (--generate_logistic):
   --dt_max arg          Maximum number of items of each type
   --dim arg             Chosen size category: small | medium | large | mixed
   --set_size arg        Number of generated problems.
-  --seed arg (=1)       Generator's seed.
+  --seed arg (=1)       Generator''s seed.
 
 Training Options (--train):
   --output_dir arg            Directory to store output data including trained 
