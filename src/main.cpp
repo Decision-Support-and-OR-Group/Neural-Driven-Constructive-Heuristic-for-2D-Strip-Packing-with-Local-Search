@@ -80,16 +80,16 @@ std::string cmd4 = "nd-ch-sp --test --output_dir=test_out_dir --input_file=test/
 int main(int argc, char** argv) {
 
 
-    CmdLineArgs parser(cmd1);
-    AppConfig Cfg;
-
-    if (!parse_command_line(parser.argc(), parser.argv(), Cfg)) return 1;
+    // CmdLineArgs parser(cmd1);
+    // AppConfig Cfg;
+    //
+    // if (!parse_command_line(parser.argc(), parser.argv(), Cfg)) return 1;
 
     // return 0;
-    // AppConfig Cfg;
-    // if (!parse_command_line(argc, argv, Cfg)) {
-    //     return 1;
-    // }
+    AppConfig Cfg;
+    if (!parse_command_line(argc, argv, Cfg)) {
+        return 1;
+    }
 
 
 
