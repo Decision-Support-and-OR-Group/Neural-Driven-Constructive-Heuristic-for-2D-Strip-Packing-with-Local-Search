@@ -65,7 +65,7 @@ cd ..
 ### Program usage
 Executing:
 ```bash
-./nd-ch-fjsp --help
+./nd-ch-sp --help
 ```
 
 results in the following description of the basic program usage:
